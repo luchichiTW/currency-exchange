@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { type CurrencyQueryDto } from './currency.dto';
+import { Currency } from './currency.enum';
 
 const CURRENCIES = {
   TWD: {
@@ -21,11 +22,12 @@ const CURRENCIES = {
 
 @Injectable()
 export class CurrencyService {
-  getCurrency(source: string, target: string): number {
+  getCurrency(source: Currency, target: Currency): number {
     return CURRENCIES[source][target];
   }
 
-  exchange({ source: from, target: to, amount }: CurrencyQueryDto): number {
-    return amount * this.getCurrency(from, to);
+  exchange({ source, target, amount }: CurrencyQueryDto): number {
+    // TODO: parse amount
+    return Number.parseFloat(amount) * this.getCurrency(source, target);
   }
 }
