@@ -27,7 +27,6 @@ export class CurrencyService {
   }
 
   exchange({ source, target, amount }: CurrencyQueryDto): number {
-    // TODO: parse amount
-    return Number.parseFloat(amount) * this.getCurrency(source, target);
+    return amount * this.getCurrency(source, target);
   }
 }

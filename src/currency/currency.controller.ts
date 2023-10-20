@@ -1,6 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { CurrencyService } from './currency.service';
 import { CurrencyQueryDto } from './currency.dto';
+import { formatCurrencyAmount } from './currency.utils';
 
 @Controller('currency')
 export class CurrencyController {
@@ -10,6 +11,6 @@ export class CurrencyController {
   exchange(@Query() query: CurrencyQueryDto): string {
     const amount = this.service.exchange(query);
 
-    return `${(Math.round(amount * 100) / 100).toLocaleString()}`;
+    return formatCurrencyAmount(amount);
   }
 }
