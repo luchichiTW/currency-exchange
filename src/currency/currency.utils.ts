@@ -16,5 +16,5 @@ export const parseCurrencyAmount = (amount: string) => {
  * @returns The currency string formatted as "$ X,XXX.XX".
  */
 export const formatCurrencyAmount = (amount: number) => {
-  return `$${(Math.round(amount * 100) / 100).toLocaleString()}`;
+  return `$${amount.toLocaleString()}`;
 };
