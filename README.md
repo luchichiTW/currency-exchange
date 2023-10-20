@@ -26,6 +26,8 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+Swagger Doc is running on `localhost:3000/api`
+
 ## Installation
 
 ```bash

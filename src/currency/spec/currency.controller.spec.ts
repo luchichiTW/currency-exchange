@@ -43,18 +43,10 @@ describe('CurrencyController', () => {
   it('should exchange currency and round to two decimal places', () => {
     expect(
       controller.exchange({
-        source: Currency.TWD,
-        target: Currency.TWD,
-        amount: 100,
+        source: Currency.USD,
+        target: Currency.JPY,
+        amount: 1525,
       }),
-    ).toBe('$100');
-
-    expect(
-      controller.exchange({
-        source: Currency.TWD,
-        target: Currency.USD,
-        amount: 100,
-      }),
-    ).toBe('$3.28');
+    ).toBe('$170,496.53');
   });
 });

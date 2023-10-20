@@ -12,7 +12,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const status = exception.getStatus();
-
     const res = exception.getResponse();
 
     if (typeof res === 'string') {
@@ -23,7 +22,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     } else {
       response.status(status).json({
         statusCode: status,
-        msg: res['message'] || 'unexpected error',
+        msg: [...res['message']].join(',') || 'unexpected error',
       });
     }
   }
